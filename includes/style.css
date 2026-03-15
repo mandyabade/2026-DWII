@@ -1,0 +1,123 @@
+
+/* ── Reset e base ──────────────────────────────── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: Arial, sans-serif;
+  background: #f3f4f6;
+  color: #010000;
+  line-height: 1.7;
+}
+
+header {
+  padding: 30px 40px;
+}
+
+/* ── Layout ─────────────────────────────────────── */
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* ── Títulos de seção ────────────────────────────── */
+h1.titulo-secao { color: #3b579d; margin-bottom: 24px; }
+
+/* ── Navegação ───────────────────────────────────── */
+nav {
+  background: #3b579d;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
+  font-weight: bold;
+}
+/* Classe aplicada via PHP ao item da página atual */
+nav a.ativo {
+  color: #f0b341;
+  border-bottom: 2px solid #f0b341;
+}
+
+/* ── Cards de conteúdo ───────────────────────────── */
+.card {
+  background: white;
+  padding: 28px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  border-left: 4px solid #3b579d;
+}
+.card h3 { margin-top: 0; color: #2a4080; margin-bottom: 12px; }
+.card p  { margin-bottom: 0; color: #374151; }
+
+/* ── Formulários ─────────────────────────────────── */
+.form-container {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+}
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  margin-top: 16px;
+}
+label:first-of-type { margin-top: 0; }
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: Arial, sans-serif;
+}
+textarea { resize: vertical; }
+
+button[type="submit"] {
+  margin-top: 20px;
+  background: #3b579d;
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+}
+button[type="submit"]:hover { background: #2a4080; }
+
+/* ── Alertas ─────────────────────────────────────── */
+/* Exibidos pelo PHP quando há erros de validação */
+.alerta-erro {
+  background: #fce8e8;
+  border-left: 4px solid #cf1c21;
+  border-radius: 0 8px 8px 0;
+  padding: 18px 22px;
+  margin-top: 20px;
+}
+.alerta-erro h3 { color: #cf1c21; margin-top: 0; }
+
+/* Exibido pelo PHP quando o envio foi bem-sucedido */
+.alerta-sucesso {
+  background: #e9f5ea;
+  border-left: 4px solid #3ba34a;
+  border-radius: 0 8px 8px 0;
+  padding: 18px 22px;
+  margin-top: 20px;
+}
+.alerta-sucesso h3 { color: #3ba34a; margin-top: 0; }
+
+/* ── Rodapé ──────────────────────────────────────── */
+footer {
+  background: #010000;
+  color: #6b7280;
+  text-align: center;
+  padding: 20px;
+  margin-top: 60px;
+  font-size: 14px;
+  line-height: 1.8;
+}
