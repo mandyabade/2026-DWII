@@ -41,12 +41,22 @@ $aulas = [
     ],
     [
         "numero" => "04",
-        "nome" => "Formuláio de Contato",
+        "nome" => "Formulário de Contato",
         "descricao" => "Formulário cem validação no servidor, proteção XSS e padrão PRG.",
         "link" => "02_formularios/contato.php",
         "icone" => "📬",
         "cor" => "#3ba34a",
-        "conceitos" => "$_POST, validação, htmlspecialchars(), header() + exit",
+        "conceitos" => '$_POST, validação, htmlspecialchars(), header() + exit',
+    ],
+
+    [
+        "numero" => "05",
+        "nome" => "Catálogo",
+        "descricao" => "Listagem integrada ao banco de dados.",
+        "link" => "03_pdo/index.php",
+        "icone" => "🗃️",
+        "cor" => "#d89741",
+        "conceitos" => 'Filtragem, htmlspecialchars(), header() + exit',
     ],
 ];
 ?>
