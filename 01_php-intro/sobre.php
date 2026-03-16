@@ -1,36 +1,34 @@
 <?php
+/**
+ * ===============================================================
+ * Arquivo: 01_php-intro/sobre.php 
+ * Disciplina: Desenvolvimento Web II (2026-DWII)
+ * Aula: 03 - Aruqitetura Web e Introdução ao PHP
+ * Autor: Mandy Abade Antunes
+ * ===============================================================
+ */
+
     $nome = "Mandy Abade Antunes";
     $profissao = "Estudante de Tecnologia";
     $curso = "Técnico em Informática - IFPR";
-    $pagina_atual = "inicio";
+    $pagina_atual = "sobre";
     $caminho_raiz   = "../";
     $titulo_pagina  = "Portfólio – {$nome}";
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <?php include '../includes/cabecalho.php'; ?>
-</head>
 
-<body>
+<?php include '../includes/cabecalho.php'; ?>
 
-    <nav>
-        <?php include '../includes/cabecalho.php'; ?>
-    </nav>
-
-    <div class="hero">
-        <h1><?php echo $nome; ?></h1>
-        <p><?php echo $profissao; ?> | <?php echo $curso; ?></p>
+    <div class="sobre">
+        <h1>👤 Sobre mim</h1>
+        <p>
+            Olá! Sou <strong><?php echo $nome; ?></strong>, estudante de
+            Técnico em Informática no IFPR de Ponta Grossa.
+        </p>
+        <p>
+            Gosto de programar, criar páginas web e principalmente de banco de dados, mas fora da vida acadêmica gosto de ir à academia, assistir séries novas e ouvir música.        
+        </p>
     </div>
 
-    <div class="container">
-        <h2>Bem-vindo ao meu portfólio</h2>
-        <p>Esta página foi gerada pelo PHP em:
-        <strong><?php echo date("d/m/Y \a\s H:i:s"); ?></strong></p>
-    </div>
+<?php include '../includes/rodape.php'; ?>
 
-    <?php include '../includes/rodape.php'; ?>
-
-</body>
-</html>

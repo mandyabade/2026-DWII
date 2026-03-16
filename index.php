@@ -17,13 +17,8 @@
  * Cabeçalho, nav e rodapé são definidos inline aqui.
 */
 
-// --- VARIÁVEIS DE CONTEÚDO -------------------------------------
 $nome = "Mandy Abade Antunes";
 $subtitulo = "Repositório 2026 - Desenvolvimento Web II";
-
-// --- CATÁLOGO DE AULAS -----------------------------------------
-// Array associativo: cada aula é um bloco [...] com suas chaves.
-// Para adicionar novas aulas: copie um bloco e edite os valores.
 
 $aulas = [
     [
@@ -42,13 +37,13 @@ $aulas = [
         "link" => "01_php-intro/index.php",
         "icone" => "🐘",
         "cor" => "#3b579d",
-        "conceitos" => "Variáveis, echo,include, foreach, operador ternário",
+        "conceitos" => "Variáveis, echo, include, foreach, operador ternário",
     ],
     [
         "numero" => "04",
         "nome" => "Formuláio de Contato",
         "descricao" => "Formulário cem validação no servidor, proteção XSS e padrão PRG.",
-        "link" => "02_formularios/index.php",
+        "link" => "02_formularios/contato.php",
         "icone" => "📬",
         "cor" => "#3ba34a",
         "conceitos" => "$_POST, validação, htmlspecialchars(), header() + exit",
@@ -77,7 +72,7 @@ $aulas = [
 </head>
 <body>
     
-    <header>
+    <header container="topo">
         <h1><?php echo htmlspecialchars($nome); ?> 👨‍💻</h1>
         <p><?php echo htmlspecialchars($subtitulo); ?></p>
     </header>
@@ -85,7 +80,7 @@ $aulas = [
     <div class="container">
 
     <!-- INSTRUÇÃO DE USO — exibida logo ao abrir o repositório -->
-        <div class="box-info" style="margin-top: 0;">
+        <div class="card" style="margin-top: 0;">
             <h3>▶️ Como executar este repositório</h3>
             <p style="font-size: 14px; color: #374151;">
             Suba o servidor PHP na <strong>raiz</strong> para acessar todas as aulas:
@@ -104,7 +99,7 @@ $aulas = [
         <h2 class="secao">📂 Projetos por Aula</h2>
         <?php foreach ($aulas as $aula): ?>
             
-            <div class="card-aula"
+            <div class="card"
                 style="border-left-color: <?php echo $aula['cor']; ?>;">
                 <div class="icone"><?php echo $aula['icone']; ?></div>
                 <div class="conteudo">
