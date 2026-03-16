@@ -1,4 +1,3 @@
-
 <?php
 
 /**
@@ -54,10 +53,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $erros[] = 'A mensagem deve ter no máximo 500 caracteres.';
     }
 
-    if (empty($erros) && $_SERVER['REQUEST_METHOD'] === 'POST') {
-        header('Location: obrigado.php?nome=' . urlencode($nome_visitante));
-    exit;
+    if (empty($erros)) {
+        header("Location: obrigado.php?nome=" . urlencode($nome_visitante) . "&assunto=" . urlencode($assunto));
+        exit;
     }
+
 }
 ?>
 

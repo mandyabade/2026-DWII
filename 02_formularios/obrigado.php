@@ -1,4 +1,3 @@
-
 <?php
 
 /**
@@ -17,6 +16,8 @@ $caminho_raiz = "../";
 $titulo_pagina = "Obrigado!";
 
 $nome_visitante = htmlspecialchars($_GET['nome'] ?? 'visitante');
+$assunto = htmlspecialchars($_GET['assunto'] ?? '');
+
 ?>
 
 <?php include '../includes/cabecalho.php'; ?>
