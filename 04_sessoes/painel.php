@@ -16,6 +16,11 @@
 require_once __DIR__ . '/includes/auth.php';
 requer_login();
 
+if (!isset($_SESSION['visitas'])) {
+    $_SESSION['visitas'] = 0;
+}
+$_SESSION['visitas']++;
+
 $titulo_pagina = 'Painel — Área Restrita';
 $caminho_raiz = '../';
 $pagina_atual = '';
@@ -36,6 +41,8 @@ $pagina_atual = '';
             <?php echo htmlspecialchars($_SESSION['usuario']); ?> </p>
         <p><strong>Login realizado em:</strong>
             <?php echo htmlspecialchars($_SESSION['logado_em'] ?? '-'); ?> </p>
+        <p><strong>Quantidade de visitas na sessão:</strong>
+            <?php echo htmlspecialchars($_SESSION['visitas'] ?? '-'); ?> </p>
     </div>
 
     <div class="card">
