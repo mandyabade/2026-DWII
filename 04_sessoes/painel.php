@@ -39,7 +39,7 @@ $pagina_atual = '';
     </div>
 
     <div class="card">
-        <h3>✅ Painel de Controle</h3>
+        <h3>🗄️ Painel de Controle</h3>
         <p>Este conteúdo so é visivel para usuários autenticados. </p>
         <p>Nas próximas aulas este painel terá funcionalidades reais (CRUD). </p>
     </div>

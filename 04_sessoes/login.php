@@ -79,7 +79,7 @@ $pagina_atual = '';
 
         <p style="text-align: center; margin-top: 20px; font-size: 13px; color: #6b7280;">
             <a href="../index.php" style="color: #3b579d;">
-                ← Voltar ao início
+                <- Voltar ao início
             </a>
         </p>
 
