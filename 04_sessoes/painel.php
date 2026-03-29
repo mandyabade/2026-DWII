@@ -6,12 +6,7 @@
  * Autor      : Mandy Abade Antunes
  */
 
-//session_start();
-
-//if (!isset($_SESSION['usuario'])) {
-//    header('Location: login.php');
-//    exit;
-//}
+session_start();
 
 require_once __DIR__ . '/includes/auth.php';
 requer_login();
@@ -20,6 +15,9 @@ if (!isset($_SESSION['visitas'])) {
     $_SESSION['visitas'] = 0;
 }
 $_SESSION['visitas']++;
+
+$mensagem = $_SESSION['flash'] ?? null;
+unset($_SESSION['flash']);
 
 $titulo_pagina = 'Painel — Área Restrita';
 $caminho_raiz = '../';
@@ -34,6 +32,12 @@ $pagina_atual = '';
 <body>
 
 <div class="container">
+
+    <?php if ($mensagem): ?>
+        <div class="flash-message">
+            <?php echo htmlspecialchars($mensagem); ?>
+        </div>
+    <?php endif; ?>
 
     <div class="alerta-sucesso">
         <h3>✅ Você está autenticado!</h3>
@@ -50,6 +54,13 @@ $pagina_atual = '';
         <p>Este conteúdo so é visivel para usuários autenticados. </p>
         <p>Nas próximas aulas este painel terá funcionalidades reais (CRUD). </p>
     </div>
+
+    <p style="margin-top: 24px; text-align: center;">
+        <a href="perfil.php" style = "background: #2394c0; color: white; padding: 10px 24px; 
+        border-radius: 6px; text-decoration: none; font-weight: bold;">
+            👨‍💻Perfil do usuário
+        </a>
+    </p>
 
     <p style="margin-top: 24px; text-align: center;">
         <a href="logout.php" style = "background: #cf1c21; color: white; padding: 10px 24px; 
