@@ -58,6 +58,26 @@ $aulas = [
         "cor" => "#d89741",
         "conceitos" => 'Filtragem, htmlspecialchars(), header() + exit',
     ],
+
+    [
+        "numero" => "06",
+        "nome" => "Sessões",
+        "descricao" => "Área de login.",
+        "link" => "04_sessoes/publico.php",
+        "icone" => "🔐",
+        "cor" => "#d84167",
+        "conceitos" => 'Autenticação, requer_login(), redirecionar_se_logado()',
+    ],
+
+    [
+        "numero" => "07",
+        "nome" => "CRUD",
+        "descricao" => "Cadastro de projetos.",
+        "link" => "05_crud/index.php",
+        "icone" => "🧾​",
+        "cor" => "#ff2222",
+        "conceitos" => 'requer_login(), INSERT, SELECT',
+    ],
 ];
 ?>
 
