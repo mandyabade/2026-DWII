@@ -33,9 +33,8 @@ if ($categoria) {
 
 // busca por texto (nome + descrição)
 if ($busca) {
-    $sql .= " AND (nome LIKE :busca_nome OR descricao LIKE :busca_desc)";
-    $params[':busca_nome'] = "%$busca%";
-    $params[':busca_desc'] = "%$busca%";
+    $sql .= " AND nome LIKE :busca";
+    $params[':busca'] = "%$busca%";
 }
 
 $sql .= " ORDER BY criado_em DESC";
