@@ -45,6 +45,10 @@ $stmt->execute($params);
 $projetos = $stmt->fetchAll();
 
 $cadastroOk = isset($_GET['cadastro']) && $_GET['cadastro'] === 'ok';
+$editadoOk = isset($_GET['editado']) && $_GET['editado'] === 'ok';
+$excluidoOk = isset($_GET['excluido']) && $_GET['excluido'] === 'ok';
+$erroMsg = isset($_GET['erro']) ? $_GET['erro'] : '';
+
 
 $titulo_pagina = 'Meus Projetos — Portifólio';
 $caminho_raiz = '../';
@@ -68,6 +72,28 @@ $pagina_atual = '';
     <?php if($cadastroOk): ?>
         <div class="alerta-sucesso">
             <p style="margin:0;">Projeto cadastrado com sucesso!</p>
+        </div>
+    <?php endif; ?>
+
+    <?php if($editadoOk): ?>
+        <div class="alerta-sucesso">
+            <p style="margin:0;">Projeto atualizado com sucesso!</p>
+        </div>
+    <?php endif; ?>
+
+    <?php if($excluidoOk): ?>
+        <div class="alerta-sucesso">
+            <p style="margin:0;">Projeto excluido com sucesso!</p>
+        </div>
+    <?php endif; ?>
+
+    <?php if($erroMsg === 'nao_encontrado'): ?>
+        <div class="alerta-erro">
+            <p style="margin:0;">Projeto não encontrado. Ele pode já ter sido removido.</p>
+        </div>
+    <?php elseif($erroMsg === 'id_invalido'): ?>
+        <div class="alerta-erro">
+            <p style="margin:0;">Requisição inválida.</p>
         </div>
     <?php endif; ?>
 
@@ -124,16 +150,24 @@ $pagina_atual = '';
                         📅 <?php echo htmlspecialchars($projeto['ano']); ?>
                     </p>
 
-                    <a href="detalhes.php?id=<?php echo $projeto['id']; ?>">
-                        Ver detalhes
-                    </a>
-
                     <?php if ($projeto['link_github']): ?>
                         <a href="<?php echo htmlspecialchars($projeto['link_github']); ?>"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="btn-secundario">🔗 Ver no GitHub</a>
                     <?php endif; ?>
+                    
+                    <a href="detalhes.php?id=<?php echo $projeto['id']; ?>">
+                        Ver detalhes
+                    </a>
+
+                    <div style="margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap;">
+                        <a href="editar.php?id=<?php echo (int) $projeto['id']; ?>"
+                        class="btn-secundario">✏️ Editar</a>
+                        <a href="excluir.php?id=<?php echo (int) $projeto['id']; ?>"
+                        class="btn-perigo">🗑️ Excluir</a>
+                    </div>
+
                 </div>
             <?php endforeach; ?>
         </div>
