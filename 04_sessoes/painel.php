@@ -52,7 +52,9 @@ $pagina_atual = '';
     <div class="card">
         <h3>🗄️ Painel de Controle</h3>
         <p>Este conteúdo so é visivel para usuários autenticados. </p>
-        <p>Nas próximas aulas este painel terá funcionalidades reais (CRUD). </p>
+        <a href="../05_crud/index.php" class="btn-primario">
+            📁 Gerenciar Projetos
+        </a>
     </div>
 
     <p style="margin-top: 24px; text-align: center;">
