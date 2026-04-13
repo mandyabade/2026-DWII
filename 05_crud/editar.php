@@ -14,7 +14,7 @@
 require_once __DIR__ . '/../04_sessoes/includes/auth.php';
 requer_login();
 
-require_once __DIR__ . '/includes/conxao.php';
+require_once __DIR__ . '/includes/conexao.php';
 
 $id = (int) ($_GET['id'] ?? 0);
 
@@ -35,18 +35,21 @@ if (!$projeto) {
 
 $erro = '';
 
-// --- Processamento do POST (UPDATE) ---
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    // Captura e sanitiza
     $nome        = trim($_POST['nome'] ?? '');
     $descricao   = trim($_POST['descricao'] ?? '');
     $tecnologias = trim($_POST['tecnologias'] ?? '');
     $link_github = trim($_POST['link_github'] ?? '');
-    $ano         = (int) ($_POST['ano'] ?? date('Y'));
+    $ano = (int) ($_POST['ano'] ?? 0);
+    $anoAtual = (int) date('Y');
 
     if ($nome === '' || $descricao === '' || $tecnologias === '') {
         $erro = 'Preencha todos os campos obrigatórios.';
+    }
+
+    if ($ano < 2000 || $ano > $anoAtual) {
+        $erro = 'O ano deve estar entre 2000 e ' . $anoAtual . '.';
     }
 
     if ($erro === '') {
