@@ -19,10 +19,10 @@ $pagina_atual  = 'inicio';
 $caminho_raiz  = './';
 $titulo_pagina = 'Portfólio — Mandy Abade Antunes';
 $nome      = 'Mandy Abade Antunes';
-$descricao = 'Estudante de Técnico em Informática no IFPR, '
-           . 'apaixonado por desenvolvimento web e tecnologia. '
-           . 'Este portfólio documenta minha jornada de aprendizado '
-           . 'ao longo da disciplina de Desenvolvimento Web II.';
+$descricao = 'Sou estudante do IFPR CRPG, faço o curso técnico de Informática integrado ao ensino médio.'
+            . 'Gosto de progamar e principalmente de banco de dados, '
+            . 'mas fora da vida acadêmica gosto de ir à academia, fazer as unhas,'
+            . ' assistir séries novas e ouvir música.';
 $email     = '20241ctb0100049@estudantes.ifpr.edu.br';
 
 ?>
