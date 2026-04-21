@@ -1,0 +1,273 @@
+/**
+ * ===============================================================
+ * Arquivo: includes/style.php 
+ * Disciplina: Desenvolvimento Web II (2026-DWII)
+ * Aula: 03 - Aruqitetura Web e Introdução ao PHP
+ * Autor: Mandy Abade Antunes
+ * ===============================================================
+ */
+
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f0ff;
+  color: #2d1b4e;
+  line-height: 1.7;
+}
+
+header {
+  padding: 30px 40px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+main {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.apresentacao {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  margin-top: 20px;
+}
+
+/* .foto-container: impede que a foto encolha quando o texto é longo */
+.foto-container { flex-shrink: 0; }
+
+/* .foto-perfil: imagem circular com borda azul */
+.foto-perfil {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;   /* torna a imagem circular */
+  object-fit: cover;    /* recorta a imagem sem distorcer */
+  border: 5px solid #3b579d;
+  display: block;
+}
+
+/* .texto-container: ocupa o espaço restante ao lado da foto */
+.texto-container { flex: 1; }
+.texto-container h2 {
+  color: #3b579d;
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+.texto-container p {
+  color: #010000;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+/* .info-cards: coluna de cards com informações rápidas */
+.info-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/*
+ * .info-card: cada linha de informação (ícone + texto).
+ * Diferente de .card (card de conteúdo) — por isso o nome distinto.
+ */
+.info-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #e8edf5;
+  border-left: 4px solid #3b579d;
+  border-radius: 6px;
+  padding: 10px 14px;
+}
+.card-icon  { font-size: 18px; flex-shrink: 0; }
+.card-texto { font-size: 14px; color: #010000; }
+
+/* ── Cards de conteúdo ─────────────────────────────────────── */
+/*
+ * .card: usado nas páginas de portfólio (sobre, projetos, contato).
+ * Diferente de .info-card (que é exclusivo da homepage).
+ */
+.card {
+  background: white;
+  padding: 28px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  border-left: 4px solid #7b5dc9;
+}
+.card h3 { margin-top: 0; color: #5a3fb5; margin-bottom: 12px; }
+.card p  { margin-bottom: 0; color: #4b3c6e; }
+
+.sobre{
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 0 40px;
+}
+
+.hero{
+  margin: 20px auto;
+  padding: 0 40px;
+}
+
+h1.titulo-secao {
+  color: #7b5dc9;
+  margin-bottom: 24px;
+}
+
+nav {
+  background: #3b579d;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap; /* permite quebra de linha em telas pequenas */
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
+  font-weight: bold;
+  padding: 4px 0;
+}
+/* .ativo: item do menu correspondente à página atual
+   Aplicado dinamicamente pelo nav.php via PHP */
+nav a.ativo {
+  color: #f0b341;
+  border-bottom: 2px solid #f0b341;
+}
+
+.form-container {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  margin-top: 16px;
+}
+
+label:first-of-type { margin-top: 0; }
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d8cdf7;
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: Arial, sans-serif;
+}
+
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d8cdf7;
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: Arial, sans-serif;
+}
+
+textarea { resize: vertical; }
+
+button[type="submit"] {
+  margin-top: 20px;
+  background: #7b5dc9;
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background: #5a3fb5;
+}
+
+
+.alerta-erro h3 { color: #cf1c21; margin-top: 0; }
+
+.alerta-sucesso {
+  background: #efeaff;
+  color: #065f46;
+  border-left: 4px solid #065f4698;
+  border-radius: 0 8px 8px 0;
+  padding: 18px 22px;
+  margin-top: 20px;
+}
+
+.alerta-erro {
+  background: #fdecec;
+  color: #991b1b;
+  border-left: 4px solid #e72a30;
+  border-radius: 0 8px 8px 0;
+  padding: 18px 22px;
+  margin-top: 20px;
+}
+
+
+.alerta-sucesso h3 { color: #7b5dc9; margin-top: 0; }
+
+footer {
+  background: #3e2f6f;
+  color: #e9ddff;
+  text-align: center;
+  padding: 20px;
+  margin-top: 60px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.categorias {
+  margin-bottom: 20px;
+}
+
+.categorias a {
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 4px 10px;
+  text-decoration: none;
+  background: #efeaff;
+  color: #5a3fb5;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+.categorias a:hover {
+  background: #7b5dc9;
+  color: white;
+}
+
+.flash-message {
+    background-color: #d1fae5; /* verde claro */
+    color: #065f46;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-weight: bold;
+    border: 1px solid #10b981;
+}
+
+@media (max-width: 650px) {
+  .apresentacao {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .info-card { justify-content: center; }
+}
