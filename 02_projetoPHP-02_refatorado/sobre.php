@@ -13,14 +13,14 @@ if (session_status() === PHP_SESSION_NONE) {
     $profissao = "Estudante de Tecnologia";
     $curso = "Técnico em Informática - IFPR";
     $pagina_atual = "sobre";
-    $caminho_raiz   = "../";
+    $caminho_raiz   = "./";
     $titulo_pagina  = "Sobre mim – {$nome}";
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <?php require_once __DIR__ . '/../includes/cabecalho.php'; ?>
+    <?php require_once __DIR__ . '/includes/cabecalho.php'; ?>
 </head>
 <body>
 
@@ -46,6 +46,6 @@ if (session_status() === PHP_SESSION_NONE) {
         </p>
     </div>
 
-    <?php require_once __DIR__ . '/../includes/rodape.php'; ?>
+    <?php require_once __DIR__ . '/includes/rodape.php'; ?>
 </body>
 </html>

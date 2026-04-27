@@ -8,11 +8,13 @@
  * Autor: Mandy Abade Antunes
  * ===============================================================
  */
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $nome = "Mandy Abade Antunes";
 $pagina_atual = "contato";
-$caminho_raiz = "../";
+$caminho_raiz = "./";
 $titulo_pagina = "Obrigado!";
 
 $nome_visitante = htmlspecialchars($_GET['nome'] ?? 'visitante');
@@ -20,7 +22,7 @@ $assunto = htmlspecialchars($_GET['assunto'] ?? '');
 
 ?>
 
-<?php include '../includes/cabecalho.php'; ?>
+<?php include __DIR__ . '/includes/cabecalho.php'; ?>
 
 <div class="container confirmacao">
     <p class="confirmacao-icone">✅</p>
@@ -39,4 +41,4 @@ $assunto = htmlspecialchars($_GET['assunto'] ?? '');
     <a href="contato.php" class="btn">← Enviar outra mensagem</a>
 </div>
 
-<?php include '../includes/rodape.php'; ?>
+<?php include __DIR__ . '/includes/rodape.php'; ?>

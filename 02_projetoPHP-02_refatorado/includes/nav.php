@@ -22,7 +22,7 @@ $logado = isset($_SESSION['usuario']);
     🏠 Início
   </a>
 
-  <a href="<?php echo $caminho_raiz; ?>01_php-intro/sobre.php"
+  <a href="<?php echo $caminho_raiz; ?>sobre.php"
      <?php echo menu_class('sobre', $pagina_atual); ?>>
     👤 Sobre
   </a>
@@ -32,7 +32,7 @@ $logado = isset($_SESSION['usuario']);
     🚀 Projetos
   </a>
 
-  <a href="<?php echo $caminho_raiz; ?>02_formularios/contato.php"
+  <a href="<?php echo $caminho_raiz; ?>contato.php"
      <?php echo menu_class('contato', $pagina_atual); ?>>
     📬 Contato
   </a>
