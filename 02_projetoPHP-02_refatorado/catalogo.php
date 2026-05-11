@@ -1,56 +1,59 @@
-<!--
-    Disciplina: Desenvolvimento Web II (DWII)
-    Aula: 05 - PHP + MariaDB: peristência de dados via PDO
-    Autor: Mandy Abade Antunes
-    Data: 10/03/2026
-    -->
-
 <?php
-    //Variaveis do cabeçalho global
-    $titulo_pagina = "Catálogo de Tecnologias";
-    $pagina_atual = "catalogo";
+/**
+ * Disciplina: Desenvolvimento Web II (DWII)
+ * Aula: 05 - PHP + MariaDB: peristência de dados via PDO
+ * Autor: Mandy Abade Antunes
+ * Data: 10/03/2026
+ */
+if(session_status()=== PHP_SESSION_NONE) session_start();
+$titulo_pagina = "Catálogo de Tecnologias | Portifólio DWII";
+$pagina_atual = "catalogo";
+$caminho_raiz = './';
 
-    //Incluir conexao PDO
-    require_once 'includes/conexao.php';
 
-    // filtros
-    $categoria = $_GET['categoria'] ?? null;
-    $busca = $_GET['busca'] ?? null;
+require_once __DIR__ . '/includes/conexao.php';
+$pdo = conectar();
 
-    // SQL base
-    $sql = "SELECT * FROM tecnologias WHERE 1=1";
-    $params = [];
 
-    // filtro por categoria
-    if ($categoria) {
-        $sql .= " AND categoria = :categoria";
-        $params['categoria'] = $categoria;
-    }
+// filtros
+$categoria = $_GET['categoria'] ?? null;
+$busca = $_GET['busca'] ?? null;
 
-    // busca por texto
-    if ($busca) {
-        $sql .= " AND (nome LIKE :busca_nome OR descricao LIKE :busca_desc)";
-        $params['busca_nome'] = "%$busca%";
-        $params['busca_desc'] = "%$busca%";
-    }
+// SQL base
+$sql = "SELECT * FROM tecnologias WHERE 1=1";
+$params = [];
 
-    $sql .= " ORDER BY nome ASC";
+// filtro por categoria
+if ($categoria) {
+    $sql .= " AND categoria = :categoria";
+    $params['categoria'] = $categoria;
+}
 
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute($params);
-    $tecnologias = $stmt->fetchAll();
+// busca por texto
+if ($busca) {
+    $sql .= " AND (nome LIKE :busca_nome OR descricao LIKE :busca_desc)";
+    $params['busca_nome'] = "%$busca%";
+    $params['busca_desc'] = "%$busca%";
+}
 
-    // categorias únicas
-    $stmtCat = $pdo->query("SELECT DISTINCT categoria FROM tecnologias ORDER BY categoria");
-    $categorias = $stmtCat->fetchAll(PDO::FETCH_COLUMN);
+$sql .= " ORDER BY nome ASC";
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute($params);
+$tecnologias = $stmt->fetchAll();
+
+// categorias únicas
+$stmtCat = $pdo->query("SELECT DISTINCT categoria FROM tecnologias ORDER BY categoria");
+$categorias = $stmtCat->fetchAll(PDO::FETCH_COLUMN);
 ?>
 
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-   <?php include 'includes/cab_pdo.php';?>
+   <?php require_once __DIR__ . '/includes/cabecalho.php';?>
 </head>
+
 <body>
     <div class="container">
         <h1 class="titulo-secao">🗃️ Catálogo de Tecnologias</h1>
