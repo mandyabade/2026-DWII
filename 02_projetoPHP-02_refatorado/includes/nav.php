@@ -27,7 +27,7 @@ $logado = isset($_SESSION['usuario']);
     👤 Sobre
   </a>
 
-  <a href="<?php echo $caminho_raiz; ?>01_php-intro/projetos.php"
+  <a href="<?php echo $caminho_raiz; ?>projetos.php"
      <?php echo menu_class('projetos', $pagina_atual); ?>>
     🚀 Projetos
   </a>
@@ -37,7 +37,7 @@ $logado = isset($_SESSION['usuario']);
     📬 Contato
   </a>
 
-  <a href="<?php echo $caminho_raiz; ?>03_pdo/catalogo.php"
+  <a href="<?php echo $caminho_raiz; ?>catalogo.php"
      <?php echo menu_class('catalogo', $pagina_atual); ?>>
     🗄️ Catálogo
   </a>

@@ -31,7 +31,7 @@ $projetos = $stmt->fetchAll();
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <?php include '../includes/cabecalho.php'; ?>
+    <?php include __DIR__ . '/includes/cabecalho.php'; ?>
 </head>
 <body>    
     <div class="container">
@@ -66,10 +66,6 @@ $projetos = $stmt->fetchAll();
 
                         <p style="margin: 0 0 6px; font-size: 13px; color: #6b7280;">
                             🔧 <?php echo htmlspecialchars($projeto['tecnologias']); ?>
-                        </p>
-
-                        <p style="margin: 0 0 12px; font-size: 13px; color: #6b7280;">
-                            📅 <?php echo (int) $projeto['ano']; ?>
                         </p>
 
                         <p style="margin: 0 0 12px; font-size: 13px; color: #6b7280;">

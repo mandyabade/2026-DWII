@@ -5,104 +5,116 @@
  * Autor: Mandy Abade Antunes
  * Data: 10/03/2026
  */
-if(session_status()=== PHP_SESSION_NONE) session_start();
-$titulo_pagina = "Catálogo de Tecnologias | Portifólio DWII";
-$pagina_atual = "catalogo";
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+$pagina_atual = 'catalogo';
+$titulo_pagina = 'Catálogo de Tecnologias | Portfólio DWII';
 $caminho_raiz = './';
 
-
 require_once __DIR__ . '/includes/conexao.php';
+
 $pdo = conectar();
 
-
-// filtros
 $categoria = $_GET['categoria'] ?? null;
 $busca = $_GET['busca'] ?? null;
-
-// SQL base
-$sql = "SELECT * FROM tecnologias WHERE 1=1";
+$sql = "SELECT * FROM tecnologias WHERE status = 'ativo' ";
 $params = [];
 
-// filtro por categoria
 if ($categoria) {
     $sql .= " AND categoria = :categoria";
     $params['categoria'] = $categoria;
 }
 
-// busca por texto
 if ($busca) {
-    $sql .= " AND (nome LIKE :busca_nome OR descricao LIKE :busca_desc)";
+    $sql .= "AND (nome LIKE :busca_nome OR descricao LIKE :busca_desc)";
     $params['busca_nome'] = "%$busca%";
     $params['busca_desc'] = "%$busca%";
 }
 
 $sql .= " ORDER BY nome ASC";
-
 $stmt = $pdo->prepare($sql);
 $stmt->execute($params);
 $tecnologias = $stmt->fetchAll();
 
-// categorias únicas
 $stmtCat = $pdo->query("SELECT DISTINCT categoria FROM tecnologias ORDER BY categoria");
 $categorias = $stmtCat->fetchAll(PDO::FETCH_COLUMN);
 ?>
 
-
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-   <?php require_once __DIR__ . '/includes/cabecalho.php';?>
+<?php
+require_once __DIR__ . '/includes/cabecalho.php';
+?>
 </head>
-
 <body>
-    <div class="container">
-        <h1 class="titulo-secao">🗃️ Catálogo de Tecnologias</h1>
+<div class="container">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+        <h1 class="titulo-secao" style="margin:0;">
+            🗃️ Catálogo de Tecnologias
+        </h1>
 
-        <form method="GET" action="index.php" style="margin-bottom:20px;">
-            <input type="text" name="busca" placeholder="Buscar tecnologia..."
-                value="<?php echo htmlspecialchars($busca ?? ''); ?>">
+        <span style="color:#6b7280; font-size:14px;">
+            <?php echo count($tecnologias); ?> tecnologia(s)
+        </span>
 
-            <button type="submit">Buscar</button>
-        </form>
+    </div>
 
-        <p style="color: #6b7280; margin-bottom: 20px;">
-            <?php echo count($tecnologias); ?> tecnologia(s) cadastrada(s)
-        </p>
+    <form method="GET" action="index.php" style="margin-bottom:20px;">
+        <input type="text" name="busca" placeholder="Buscar tecnologia..." value="<?php echo htmlspecialchars($busca ?? ''); ?>">
+        <button type="submit"> Buscar </button>
+    </form>
 
-        <div class="categorias">
-
+    <div class="categorias" style="margin-bottom:20px;">
         <strong>Categorias:</strong>
-
-        <a href="index.php">Todas</a>
-
+        <a href="index.php">
+            Todas
+        </a>
         <?php foreach ($categorias as $cat): ?>
             <a href="index.php?categoria=<?php echo urlencode($cat); ?>">
                 <?php echo htmlspecialchars($cat); ?>
             </a>
         <?php endforeach; ?>
+    </div>
 
+    <?php if (empty($tecnologias)): ?>
+        <div class="card" style="text-align:center; padding:40px 20px; color:#6b7280;">
+            <p style="font-size:40px; margin:0 0 12px;">
+                🧩
+            </p>
+            <p style="font-size:16px; margin:0;">
+                Nenhuma tecnologia ativa encontrada.
+            </p>
         </div>
+    <?php else: ?>
 
-        <!-- loop pelos registros do banco -->
         <?php foreach ($tecnologias as $tec): ?>
             <div class="card">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <h3 style="margin:0;">
+                        <?php echo htmlspecialchars($tec['nome']); ?>
+                    </h3>
 
-                    <h3><?php echo htmlspecialchars($tec['nome']); ?></h3>
-                    <span style="background: #e8edf5; color: #3b579d; padding: 3px 10px; border-radius: 20px; font-size: 13px">
+                    <span style=" background:#e8edf5; color:#3b579d; padding:3px 10px; border-radius:20px; font-size:13px; white-space:nowrap;">
                         <?php echo htmlspecialchars($tec['categoria']); ?>
                     </span>
                 </div>
-                <p><?php echo htmlspecialchars($tec['descricao']);?></p>
-                <a href="detalhe.php?id=<?php echo $tec['id']; ?><?php if($categoria) echo '&categoria='.$categoria; ?>" style="color: #3b579d; font-size: 14px; font-weight: bold; display: inline-block; margin-top: 10px;">
-                    Ver detalhes ->
+
+                <p style="margin:10px 0;">
+                    <?php echo htmlspecialchars($tec['descricao']); ?>
+                </p>
+
+                <a href="detalhe.php?id=<?php echo (int) $tec['id']; ?><?php if($categoria) echo '&categoria=' . urlencode($categoria); ?>" class="btn-secundario">
+                    Ver detalhes →
                 </a>
             </div>
         <?php endforeach; ?>
-    </div>
+    <?php endif; ?>
+</div>
 
-    <!-- Rodape global-->
-     <?php include 'includes/rod_pdo.php'; ?>
-    
+
+<?php require_once __DIR__ . '/includes/rodape.php'; ?>
 </body>
 </html>
