@@ -39,7 +39,7 @@ $email     = '20241ctb0100049@estudantes.ifpr.edu.br';
 
       <div class="foto-container">
         <img
-          src="<?php echo $caminho_raiz; ?>00_apresentacao/imgs/fotoMinha.jpeg"
+          src="<?php echo $caminho_raiz; ?>/includes/imgs/fotoMinha.jpeg"
           alt="Foto de <?php echo htmlspecialchars($nome); ?>"
           class="foto-perfil">
       </div>

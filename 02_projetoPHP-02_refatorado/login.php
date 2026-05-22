@@ -70,7 +70,7 @@ require_once __DIR__ . '/includes/cabecalho.php';
 ?>
 
 <main style="max-width: 420px; margin: 60px auto; padding: 0 20px;">
-    <h1>Login</h1>
+    <h1>Login</h1> <br>
 
     <?php if ($erro !== ''): ?>
         <p style="color:#cf1c21;"><?=
@@ -81,7 +81,7 @@ require_once __DIR__ . '/includes/cabecalho.php';
     <label>Usuário<br>
         <input type="text" name="login" required>
     </label>
-    <br><br>
+    <br>
     <label>Senha<br>
         <input type="password" name="senha" required>
     </label>

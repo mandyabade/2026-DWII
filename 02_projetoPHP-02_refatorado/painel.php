@@ -20,10 +20,11 @@ require_once __DIR__ . '/includes/cabecalho.php';?>
     <p>Olá, <strong><?= htmlspecialchars(usuario_atual()) ?></strong>!
     Você está em uma área restrita.</p>
 
-    <p>Em breve, esta página listará seus projetos para edição
-    (a ser implementado na <strong>Aula 13 — Refatoração Parte V</strong>).</p>
-
-    <p><a href="logout.php">Sair</a></p>
+    <p>
+        <a href="admin.php" class="btn-primario">Gerenciar projetos</a>
+    </p>
+    <br>
+    <p><a href="logout.php" class="btn-secundario">Sair</a></p>
 </main>
 
 <?php require_once __DIR__ . '/includes/rodape.php'; ?>

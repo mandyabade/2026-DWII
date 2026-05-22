@@ -28,7 +28,7 @@ if ($categoria) {
 }
 
 if ($busca) {
-    $sql .= "AND (nome LIKE :busca_nome OR descricao LIKE :busca_desc)";
+    $sql .= " AND (nome LIKE :busca_nome OR descricao LIKE :busca_desc)";
     $params['busca_nome'] = "%$busca%";
     $params['busca_desc'] = "%$busca%";
 }
@@ -62,18 +62,18 @@ require_once __DIR__ . '/includes/cabecalho.php';
 
     </div>
 
-    <form method="GET" action="index.php" style="margin-bottom:20px;">
-        <input type="text" name="busca" placeholder="Buscar tecnologia..." value="<?php echo htmlspecialchars($busca ?? ''); ?>">
+    <form method="GET" action="catalogo.php" style="margin-bottom:20px;">
+        <input type="text" name="busca" placeholder="Buscar tecnologia...">        
         <button type="submit"> Buscar </button>
     </form>
 
     <div class="categorias" style="margin-bottom:20px;">
         <strong>Categorias:</strong>
-        <a href="index.php">
+        <a href="catalogo.php">
             Todas
         </a>
         <?php foreach ($categorias as $cat): ?>
-            <a href="index.php?categoria=<?php echo urlencode($cat); ?>">
+            <a href="catalogo.php?categoria=<?php echo urlencode($cat); ?><?php if($busca) echo '&busca=' . urlencode($busca); ?>">
                 <?php echo htmlspecialchars($cat); ?>
             </a>
         <?php endforeach; ?>

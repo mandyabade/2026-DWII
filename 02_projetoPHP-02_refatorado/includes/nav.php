@@ -44,16 +44,16 @@ $logado = isset($_SESSION['usuario']);
 
   <?php if ($logado): ?>
 
-    <a href="<?php echo $caminho_raiz; ?>04_sessoes/painel.php"
+    <a href="<?php echo $caminho_raiz; ?>painel.php"
        <?php echo menu_class('painel', $pagina_atual); ?>>
       📊 Painel
     </a>
-    <a href="<?php echo $caminho_raiz; ?>04_sessoes/logout.php">
+    <a href="<?php echo $caminho_raiz; ?>logout.php">
       🚪 Sair
     </a>
 
   <?php else: ?>
-    <a href="<?php echo $caminho_raiz; ?>04_sessoes/login.php"
+    <a href="<?php echo $caminho_raiz; ?>login.php"
        <?php echo menu_class('login', $pagina_atual); ?>>
       🔐 Login
     </a>
